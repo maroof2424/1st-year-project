@@ -4,4 +4,5 @@
 
 body {
     @apply bg-gray-900 text-white;
+    @apply font-sans; /* 👈 ab poore project me Montserrat use hoga */
 }

@@ -9,64 +9,11 @@ interface LearningCategory {
     color: string;
     skills: string[];
 }
-interface Project {
-    title: string;
-    description: string;
-    imageUrl: string;
-    altText: string;
-    technologies: string;
-    linkText: string;
-    linkHref: string;
-}
 
 const Home = () => {
     useEffect(() => {
         AOS.init({ once: true });
     }, []);
-    const webProjects: Project[] = [
-        {
-            title: "E-commerce Intelligence Dashboard",
-            description: "A real-time analytics dashboard built with **React, Next.js, and Node.js**, offering deep insights into sales, customer behavior, and inventory.",
-            imageUrl: "https://placehold.co/112x112/1F2937/D1D5DB?text=Web+Dash", // Placeholder image
-            altText: "E-commerce Analytics Dashboard",
-            technologies: "React, Next.js, Node.js",
-            linkText: "View Case Study",
-            linkHref: "/projects/web/ecommerce-dashboard",
-        },
-        {
-            title: "Dynamic Portfolio Creator",
-            description: "A personalized portfolio builder leveraging **MongoDB** for flexible data storage and **Tailwind CSS** for stunning, customizable UIs.",
-            imageUrl: "https://placehold.co/112x112/1F2937/D1D5DB?text=Portfolio", // Placeholder image
-            altText: "Interactive Portfolio Builder",
-            technologies: "MongoDB, Tailwind CSS",
-            linkText: "View Demo",
-            linkHref: "/projects/web/portfolio-creator",
-        },
-        // Add more web projects here if needed
-    ];
-
-    // Data for AI/ML & Python Projects
-    const aiMlProjects: Project[] = [
-        {
-            title: "Advanced Sentiment Analysis Engine",
-            description: "An NLP-powered tool utilizing **TensorFlow and Keras** to accurately gauge public sentiment from text data, vital for market research.",
-            imageUrl: "https://placehold.co/112x112/1F2937/D1D5DB?text=Sentiment", // Placeholder image
-            altText: "Sentiment Analysis Engine",
-            technologies: "TensorFlow, Keras",
-            linkText: "Read About It",
-            linkHref: "/projects/ai-ml/sentiment-analysis",
-        },
-        {
-            title: "Smart Sales Forecasting Model",
-            description: "A robust Machine Learning model using **Scikit-learn and Pandas** for highly accurate future sales predictions based on historical data.",
-            imageUrl: "https://placehold.co/112x112/1F2937/D1D5DB?text=Forecasting", // Placeholder image
-            altText: "Predictive Sales Forecasting Model",
-            technologies: "Scikit-learn, Pandas",
-            linkText: "Explore Model",
-            linkHref: "/projects/ai-ml/sales-forecasting",
-        },
-        // Add more AI/ML projects here if needed
-    ];
     const learningCategories: LearningCategory[] = [
         { title: "Web Development", icon: "fas fa-code", color: "text-blue-400", skills: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Node.js", "MongoDB", "Tailwind CSS", "Git", "REST API"] },
         { title: "Data Science", icon: "fas fa-chart-bar", color: "text-purple-400", skills: ["Python", "R", "SQL", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Scikit-learn", "EDA", "Statistics"] },
@@ -90,7 +37,7 @@ const Home = () => {
     };
     return (
         <>
-            <div className="min-h-screen bg-gradient-to-br from-gray-950 to-slate-900 text-slate-100 font-sans antialiased selection:bg-purple-600 selection:text-white">
+            <div className="min-h-screen bg-gradient-to-br from-gray-950 to-slate-900 text-slate-100  antialiased selection:bg-purple-600 selection:text-white">
 
                 <main className="container mx-auto py-8">
                     {/* Part 1 Hero Section: Dynamic & Engaging */}
@@ -100,8 +47,9 @@ const Home = () => {
                         data-aos="zoom-in"
                         data-aos-duration="800"
                     >
+                        {/* Background Image */}
                         <div
-                            className="absolute inset-0 opacity-90"
+                            className="absolute inset-0 opacity-50" // 👈 yahan opacity kam kar di
                             style={{
                                 backgroundImage:
                                     'url("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29kaW5nfGVufDB8fDB8fHww")',
@@ -115,16 +63,22 @@ const Home = () => {
                             data-aos-duration="1000"
                         ></div>
 
+                        {/* Black overlay — halka sa hi rakha */}
                         <div
-                            className="absolute inset-0 bg-black opacity-60"
+                            className="absolute inset-0 bg-black/50" // 👈 Tailwind ka /30 overlay
                             data-aos="fade"
                             data-aos-delay="200"
                             data-aos-duration="1000"
                         ></div>
 
-                        <div className="relative z-10 p-8 lg:p-16" data-aos="fade-up" data-aos-delay="300">
+                        {/* Content */}
+                        <div
+                            className="relative z-10 p-8 lg:p-16"
+                            data-aos="fade-up"
+                            data-aos-delay="300"
+                        >
                             <h1
-                                className="text-4xl md:text-6xl lg:text-7xl font-['Montserrat'] font-extrabold mb-6 leading-tight text-white text-shadow-glow"
+                                className="text-6xl font-bold mb-6 leading-tight text-white text-shadow-glow"
                                 data-aos="fade-right"
                                 data-aos-delay="400"
                                 data-aos-duration="1000"
@@ -141,13 +95,14 @@ const Home = () => {
                             </h1>
 
                             <p
-                                className="text-lg md:text-xl lg:text-2xl mb-10 max-w-5xl mx-auto text-slate-100 leading-relaxed font-['Lato']"
+                                className="text-2xl mb-10 max-w-5xl mx-auto text-slate-100 leading-relaxed"
                                 data-aos="fade-up"
                                 data-aos-delay="500"
                                 data-aos-duration="1000"
                             >
-                                Welcome to the platform where raw data transforms into powerful visual stories. Whether you're
-                                a curious beginner, a passionate developer, or a business seeking clarity — you'll find the{" "}
+                                Welcome to the platform where raw data transforms into powerful visual
+                                stories. Whether you're a curious beginner, a passionate developer, or a
+                                business seeking clarity — you'll find the{" "}
                                 <strong
                                     className="text-white font-bold"
                                     data-aos="zoom-in"
@@ -205,6 +160,7 @@ const Home = () => {
                     </section>
 
 
+
                     {/* Part 2 Key Features Overview: Refined Messaging & Visuals */}
                     <section
                         id="features-overview"
@@ -213,7 +169,7 @@ const Home = () => {
                         data-aos-duration="1000"
                     >
                         <h2
-                            className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-['Poppins'] mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 drop-shadow-lg"
+                            className="text-6xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 drop-shadow-lg"
                             data-aos="zoom-in-right"
                             data-aos-delay="100"
                             data-aos-duration="800"
@@ -222,7 +178,7 @@ const Home = () => {
                         </h2>
 
                         <p
-                            className="text-lg md:text-xl lg:text-2xl font-['Lato'] text-slate-300 mb-16 max-w-4xl mx-auto leading-relaxed px-4"
+                            className="text-2xl text-slate-300 mb-16 max-w-4xl mx-auto leading-relaxed px-4"
                             data-aos="fade-up"
                             data-aos-delay="200"
                             data-aos-duration="800"
@@ -241,11 +197,11 @@ const Home = () => {
                                 <div className="absolute inset-0 bg-purple-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                                 <i className="fas fa-lock text-5xl text-purple-400 mb-6 transition-all duration-300 group-hover:text-purple-300 group-hover:scale-110"
                                     data-aos="flip-left" data-aos-delay="350" data-aos-duration="600"></i>
-                                <h3 className="text-2xl font-bold font-['Montserrat'] mb-3 text-white"
+                                <h3 className="text-2xl font-bold mb-3 text-white"
                                     data-aos="fade-right" data-aos-delay="400" data-aos-duration="600">
                                     Advanced Authentication
                                 </h3>
-                                <p className="text-slate-400 text-base font-['Open_Sans'] leading-relaxed"
+                                <p className="text-slate-400 text-base  leading-relaxed"
                                     data-aos="fade-in" data-aos-delay="450" data-aos-duration="600">
                                     Secure your journey with Face Authentication & JWT-powered login/signup.
                                 </p>
@@ -261,11 +217,11 @@ const Home = () => {
                                 <div className="absolute inset-0 bg-teal-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                                 <i className="fas fa-book-open text-5xl text-teal-400 mb-6 transition-all duration-300 group-hover:text-teal-300 group-hover:scale-110"
                                     data-aos="flip-left" data-aos-delay="450" data-aos-duration="600"></i>
-                                <h3 className="text-2xl font-bold font-['Montserrat'] mb-3 text-white"
+                                <h3 className="text-2xl font-bold mb-3 text-white"
                                     data-aos="fade-right" data-aos-delay="500" data-aos-duration="600">
                                     In-Depth Learning
                                 </h3>
-                                <p className="text-slate-400 text-base font-['Open_Sans'] leading-relaxed"
+                                <p className="text-slate-400 text-base  leading-relaxed"
                                     data-aos="fade-in" data-aos-delay="550" data-aos-duration="600">
                                     Master Web Dev, Data Science, AI, and more with structured courses.
                                 </p>
@@ -281,11 +237,11 @@ const Home = () => {
                                 <div className="absolute inset-0 bg-orange-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                                 <i className="fas fa-project-diagram text-5xl text-orange-400 mb-6 transition-all duration-300 group-hover:text-orange-300 group-hover:scale-110"
                                     data-aos="flip-left" data-aos-delay="550" data-aos-duration="600"></i>
-                                <h3 className="text-2xl font-bold font-['Montserrat'] mb-3 text-white"
+                                <h3 className="text-2xl font-bold  mb-3 text-white"
                                     data-aos="fade-right" data-aos-delay="600" data-aos-duration="600">
                                     Inspiring Projects
                                 </h3>
-                                <p className="text-slate-400 text-base font-['Open_Sans'] leading-relaxed"
+                                <p className="text-slate-400 text-base  leading-relaxed"
                                     data-aos="fade-in" data-aos-delay="650" data-aos-duration="600">
                                     Explore real-world applications from our expert developers.
                                 </p>
@@ -301,11 +257,11 @@ const Home = () => {
                                 <div className="absolute inset-0 bg-red-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                                 <i className="fas fa-tools text-5xl text-red-400 mb-6 transition-all duration-300 group-hover:text-red-300 group-hover:scale-110"
                                     data-aos="flip-left" data-aos-delay="650" data-aos-duration="600"></i>
-                                <h3 className="text-2xl font-bold font-['Montserrat'] mb-3 text-white"
+                                <h3 className="text-2xl font-bold  mb-3 text-white"
                                     data-aos="fade-right" data-aos-delay="700" data-aos-duration="600">
                                     Powerful Data Tools
                                 </h3>
-                                <p className="text-slate-400 text-base font-['Open_Sans'] leading-relaxed"
+                                <p className="text-slate-400 text-base  leading-relaxed"
                                     data-aos="fade-in" data-aos-delay="750" data-aos-duration="600">
                                     Visualize any data format & get instant AI assistance.
                                 </p>
@@ -315,7 +271,7 @@ const Home = () => {
 
 
                     {/* Part 3 Learn Section */}
-                    <section id="learn" className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-800 text-slate-200 font-sans py-16">
+                    <section id="learn" className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-800 text-slate-200 py-16">
                         <div className="container mx-auto px-4">
 
                             {/* Section title */}
@@ -436,145 +392,16 @@ const Home = () => {
                         </div>
                     </section>
 
-
-                    {/* Part 4 Projects Section */}
-                    <section id="projects" className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-800 text-slate-200 font-sans py-16">
-                        <div className="container mx-auto px-4">
-                            {/* Section title */}
-                            <h2 className="text-4xl lg:text-5xl font-extrabold text-center mb-16 text-orange-300 drop-shadow-lg leading-tight"
-                                data-aos="fade-right" data-aos-duration="1000">
-                                Our Vision in Action: <br className="sm:hidden" /> Curated Project Portfolios
-                            </h2>
-
-                            {/* Section description */}
-                            <p className="text-xl text-center mb-16 max-w-4xl mx-auto text-slate-300 leading-relaxed"
-                                data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                                Witness the power of code and data come alive through impactful, real-world applications. Our two core development
-                                pillars showcase innovative solutions built to inspire and solve complex challenges.
-                            </p>
-
-                            {/* Grid for project categories (Web Dev and AI/ML) */}
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-                                {/* Web Development Projects */}
-                                <div className="bg-slate-800 p-10 rounded-2xl shadow-xl border border-slate-700 hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-4 relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-700"
-                                    data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
-
-                                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-slate-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-
-                                    <h3 className="text-3xl font-bold mb-8 text-yellow-300 flex items-center justify-center"
-                                        data-aos="zoom-in" data-aos-delay="400">
-                                        <i className="fas fa-globe mr-4 text-4xl"></i> Web Development Masterpieces
-                                    </h3>
-
-                                    <p className="text-slate-400 mb-8 text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="500">
-                                        Explore a diverse range of modern web applications, from interactive dashboards and robust e-commerce solutions
-                                        to scalable CMSs. Each project shows our commitment to clean code, responsive design, and great UX.
-                                    </p>
-
-                                    <div className="space-y-8">
-                                        {webProjects.map((project, index) => (
-                                            <div key={index} className="bg-slate-700 p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 border border-slate-600 hover:bg-slate-600 transition duration-200 group"
-                                                data-aos="fade-up" data-aos-delay={`${index * 100 + 600}`} data-aos-duration="800">
-                                                <img
-                                                    src={project.imageUrl}
-                                                    alt={project.altText}
-                                                    className="w-28 h-28 object-cover rounded-md flex-shrink-0 border border-slate-500 shadow-md group-hover:scale-105 transition-transform duration-300"
-                                                    onError={(e) => { e.currentTarget.src = `https://placehold.co/112x112/1F2937/D1D5DB?text=Image+Error`; }}
-                                                />
-                                                <div>
-                                                    <h4 className="text-2xl font-semibold text-white mb-2" data-aos="fade-up" data-aos-delay={`${index * 100 + 700}`}>{project.title}</h4>
-                                                    <p className="text-slate-400 text-md mb-2" data-aos="fade-in" data-aos-delay={`${index * 100 + 800}`} dangerouslySetInnerHTML={{ __html: project.description }}></p>
-                                                    <a href={project.linkHref} className="text-blue-400 hover:text-blue-300 text-md font-medium flex items-center group-hover:text-blue-200 transition-colors duration-200"
-                                                        data-aos="zoom-in" data-aos-delay={`${index * 100 + 900}`}>
-                                                        {project.linkText} <i className="fas fa-arrow-right ml-2 text-sm"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="text-center mt-12" data-aos="zoom-in-up" data-aos-delay="700" data-aos-duration="1000">
-                                        <a
-                                            href="/projects/web-development"
-                                            className="w-full sm:w-auto px-5 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-yellow-600 hover:bg-yellow-700 text-white font-bold rounded-full shadow-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-75 text-center"
-                                        >
-                                            Explore All Web Projects
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* AI/ML & Python Projects */}
-                                <div className="bg-slate-800 p-10 rounded-2xl shadow-xl border border-slate-700 hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-4 relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-700"
-                                    data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
-
-                                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-slate-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-
-                                    <h3 className="text-3xl font-bold mb-8 text-red-300 flex items-center justify-center"
-                                        data-aos="zoom-in" data-aos-delay="400">
-                                        <i className="fas fa-microchip mr-4 text-4xl"></i> AI/ML & Python Innovations
-                                    </h3>
-
-                                    <p className="text-slate-400 mb-8 text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="500">
-                                        Dive into intelligent systems, predictive analytics, and automated solutions built using AI, ML, and Python.
-                                        These projects reflect the transformative power of data science.
-                                    </p>
-
-                                    <div className="space-y-8">
-                                        {aiMlProjects.map((project, index) => (
-                                            <div key={index} className="bg-slate-700 p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 border border-slate-600 hover:bg-slate-600 transition duration-200 group"
-                                                data-aos="fade-up" data-aos-delay={`${index * 100 + 600}`} data-aos-duration="800">
-                                                <img
-                                                    src={project.imageUrl}
-                                                    alt={project.altText}
-                                                    className="w-28 h-28 object-cover rounded-md flex-shrink-0 border border-slate-500 shadow-md group-hover:scale-105 transition-transform duration-300"
-                                                    onError={(e) => { e.currentTarget.src = `https://placehold.co/112x112/1F2937/D1D5DB?text=Image+Error`; }}
-                                                />
-                                                <div>
-                                                    <h4 className="text-2xl font-semibold text-white mb-2" data-aos="fade-up" data-aos-delay={`${index * 100 + 700}`}>{project.title}</h4>
-                                                    <p className="text-slate-400 text-md mb-2" data-aos="fade-in" data-aos-delay={`${index * 100 + 800}`} dangerouslySetInnerHTML={{ __html: project.description }}></p>
-                                                    <a href={project.linkHref} className="text-blue-400 hover:text-blue-300 text-md font-medium flex items-center group-hover:text-blue-200 transition-colors duration-200"
-                                                        data-aos="zoom-in" data-aos-delay={`${index * 100 + 900}`}>
-                                                        {project.linkText} <i className="fas fa-arrow-right ml-2 text-sm"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="text-center mt-12" data-aos="zoom-in-up" data-aos-delay="700" data-aos-duration="1000">
-                                        <a
-                                            href="/projects/ai-ml"
-                                            className="w-full sm:w-auto px-5 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-opacity-75 text-center"
-                                        >
-                                            Explore All AI/ML Projects
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* View All Projects Button */}
-                            <div className="text-center mt-24" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000">
-                                <a
-                                    href="/projects"
-                                    className="w-full sm:w-auto px-6 sm:px-12 py-4 sm:py-5 text-base sm:text-xl bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-bold rounded-full shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:ring-4 ring-green-400 ring-opacity-60 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-75 tracking-wide text-center leading-tight"
-                                >
-                                    View All Our Revolutionary Projects
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-
                     {/* Part 5 Tools */}
                     <section
                         id="tools"
-                        className="bg-gradient-to-br from-gray-950 to-gray-800 text-slate-200 font-sans py-12"
+                        className="bg-gradient-to-br from-gray-950 to-gray-800 text-slate-200 py-12"
                     >
                         <div className="container mx-auto px-4">
                             {/* Section Title */}
                             <h2
                                 data-aos="fade-up"
-                                className="text-4xl lg:text-5xl font-extrabold text-center mb-16 text-cyan-300 drop-shadow-lg leading-tight"
+                                className="text-6xl font-bold text-center mb-16 text-cyan-300 drop-shadow-lg leading-tight"
                             >
                                 Empower Your Workflow: <br className="sm:hidden" /> Intuitive Data Tools
                             </h2>
@@ -590,24 +417,25 @@ const Home = () => {
                                 <strong className="text-purple-400"> AI Chatbot</strong> ready to assist with any query, making complex tasks simple.
                             </p>
 
-                            {/* Tools Grid */}
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                                {/* Data Visualization Card */}
+                            {/* Single Card in Center */}
+                            <div className="flex justify-center">
                                 <div
                                     data-aos="zoom-in-up"
                                     data-aos-delay="200"
-                                    className="bg-slate-800 p-10 rounded-2xl shadow-xl border border-slate-700 hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-4 relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-700"
+                                    className="bg-slate-800 p-10 rounded-2xl shadow-xl border border-slate-700 hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-4 relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-700 max-w-2xl w-full"
                                 >
                                     <h3 className="text-3xl font-bold mb-8 text-blue-300 flex items-center justify-center">
                                         <i className="fas fa-chart-pie mr-4 text-4xl"></i> Dynamic Data Visualizer
                                     </h3>
-                                    <p className="text-slate-400 mb-8 text-lg leading-relaxed">
+                                    <p className="text-slate-400 mb-8 text-lg leading-relaxed text-center">
                                         Effortlessly transform raw data into beautiful, interactive visualizations. Whether it's a bar chart or heat map, gain clarity instantly.
                                     </p>
 
                                     {/* Supported Formats */}
                                     <div className="mb-8">
-                                        <p className="text-slate-300 font-semibold mb-4 text-xl border-b border-slate-700 pb-2">Supported File Formats:</p>
+                                        <p className="text-slate-300 font-semibold mb-4 text-xl border-b border-slate-700 pb-2 text-center">
+                                            Supported File Formats:
+                                        </p>
                                         <div className="flex flex-wrap justify-center gap-4 text-base text-slate-400">
                                             {[".CSV", ".PDF", ".XLSX", ".DOCX", "...and more!"].map((format, index) => (
                                                 <span
@@ -616,73 +444,35 @@ const Home = () => {
                                                     data-aos-delay={300 + index * 100}
                                                     className="bg-slate-700 px-5 py-2 rounded-full border border-slate-600 flex items-center shadow-md hover:bg-slate-600 transition duration-200"
                                                 >
-                                                    <i className={`fas ${format === ".CSV" ? "fa-file-csv text-green-400" : format === ".PDF" ? "fa-file-pdf text-red-400" : format === ".XLSX" ? "fa-file-excel text-emerald-400" : format === ".DOCX" ? "fa-file-word text-blue-400" : "fa-file-alt text-gray-400"} mr-2 text-lg`}></i>
+                                                    <i
+                                                        className={`fas ${format === ".CSV"
+                                                            ? "fa-file-csv text-green-400"
+                                                            : format === ".PDF"
+                                                                ? "fa-file-pdf text-red-400"
+                                                                : format === ".XLSX"
+                                                                    ? "fa-file-excel text-emerald-400"
+                                                                    : format === ".DOCX"
+                                                                        ? "fa-file-word text-blue-400"
+                                                                        : "fa-file-alt text-gray-400"
+                                                            } mr-2 text-lg`}
+                                                    ></i>
                                                     {format}
                                                 </span>
                                             ))}
                                         </div>
                                     </div>
 
-                                    {/* Upload Box */}
-                                    <div data-aos="fade-up" className="bg-slate-700 p-8 rounded-xl text-center border border-slate-600 shadow-inner">
-                                        <p className="text-white text-2xl font-bold mb-4">Ready to See Your Data?</p>
-                                        <p className="text-slate-400 mb-6 text-lg">Drag & Drop your file here or click below to upload:</p>
+                                    {/* Button Centered */}
+                                    <div className="text-center">
                                         <a
-                                            href="https://datatoolfordae.streamlit.app/"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
+                                            href="#"
+                                            className="inline-block px-10 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-lg rounded-full shadow-2xl transition-transform duration-300 hover:scale-105 hover:from-cyan-600 hover:to-blue-700"
                                         >
-                                            <button
-                                                className="px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-xl rounded-full shadow-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75"
-                                            >
-                                                <i className="fas fa-upload mr-3"></i> Upload Your Data
-                                            </button>
+                                            Try It Now
                                         </a>
-
-                                        <p className="text-slate-500 text-sm mt-6">Secure processing. Instant visualizations. Deep insights.</p>
                                     </div>
-                                </div>
-
-                                {/* AI Chatbot Card */}
-                                <div
-                                    data-aos="zoom-in-up"
-                                    data-aos-delay="300"
-                                    className="bg-slate-800 p-10 rounded-2xl shadow-xl border border-slate-700 hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-4 relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-700"
-                                >
-                                    <h3 className="text-3xl font-bold mb-8 text-purple-300 flex items-center justify-center">
-                                        <i className="fas fa-robot mr-4 text-4xl"></i> Intelligent AI Chatbot
-                                    </h3>
-                                    <p className="text-slate-400 mb-8 text-lg leading-relaxed">
-                                        Ask questions and get real-time answers on development, data, or anything else. Our chatbot is powered by advanced AI.
-                                    </p>
-                                    <div className="bg-slate-700 p-8 rounded-xl text-center border border-slate-600 shadow-inner">
-                                        <p className="text-white text-2xl font-bold mb-4">Ask Our AI Anything!</p>
-                                        <p className="text-slate-400 mb-6 text-lg">Type your question below and get a smart response:</p>
-                                        <div className="flex flex-col gap-4">
-                                            <textarea
-                                                className="w-full p-4 rounded-lg bg-slate-800 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
-                                                rows={4}
-                                                placeholder="e.g., Explain clustering vs classification..."
-                                            ></textarea>
-                                            <button
-                                                className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-xl rounded-full shadow-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-75"
-                                            >
-                                                <i className="fas fa-paper-plane mr-3"></i> Send Query
-                                            </button>
-                                        </div>
-                                        <p className="text-slate-500 text-sm mt-6">Powered by advanced large language models.</p>
-                                    </div>
-
-                                    <a
-                                        data-aos="fade-up"
-                                        href="/tools/ai-chatbot"
-                                        className="mt-10 text-purple-400 hover:text-purple-300 font-semibold text-lg transition duration-200 flex items-center justify-center"
-                                    >
-                                        Launch AI Chatbot &rarr;
-                                    </a>
                                 </div>
                             </div>
-
                         </div>
                     </section>
 
@@ -712,7 +502,7 @@ const Home = () => {
                         </p>
 
                         <div
-                            className="bg-slate-700 p-6 sm:p-8 rounded-xl text-center border border-slate-600 shadow-inner"
+                            className="bg-slate-700 p-6 sm:p-8 rounded-xl text-center border border-slate-600 "
                             data-aos="zoom-in-up"
                             data-aos-delay="400"
                         >
@@ -761,19 +551,14 @@ const Home = () => {
                             </p>
                         </div>
 
-                        <Link className="mt-10 inline-block text-purple-400 hover:text-purple-300 font-semibold text-lg transition duration-200 text-center w-full sm:w-auto"
-                            data-aos="fade-up"
-                            data-aos-delay="1000" to="chatbot-ai">
-                            Talk to the Bot &rarr;
 
-                        </Link>
                     </section>
 
                     {/* Part 8 Face Authentication */}
 
                     <section
                         id="face-auth-management"
-                        className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-800 text-slate-200 font-sans py-16"
+                        className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-800 text-slate-200 py-16"
                     >
                         <div className="container mx-auto px-4">
                             {/* Section title */}
@@ -855,52 +640,6 @@ const Home = () => {
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-
-                    {/* Part 9 Final CTA Section */}
-                    <section
-                        className="my-24 py-16 bg-gradient-to-br from-gray-950 to-gray-800 text-slate-200 font-sans"
-                        id="cta-data-journey"
-                    >
-                        <div className="container mx-auto px-4 text-center">
-                            {/* Section Title */}
-                            <h2
-                                className="text-4xl sm:text-5xl font-extrabold text-white mb-6 drop-shadow-lg leading-tight"
-                                data-aos="fade-up"
-                                data-aos-delay="100"
-                                data-aos-duration="700"
-                            >
-                                Ready to Transform Your Data Journey? <br className="sm:hidden" />
-                                <span className="text-emerald-300">Start Today!</span>
-                            </h2>
-
-                            {/* Section Description */}
-                            <p
-                                className="text-lg sm:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed"
-                                data-aos="fade-up"
-                                data-aos-delay="200"
-                                data-aos-duration="700"
-                            >
-                                Join thousands of learners and professionals using our platform to shape
-                                their data careers, projects, and research. Start your journey today.
-                            </p>
-
-                            {/* CTA Button */}
-                            <a
-                                href="/signup"
-                                className="inline-block px-10 sm:px-14 py-4 sm:py-6 bg-gradient-to-r from-emerald-600 to-teal-600
-                 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-xl sm:text-2xl
-                 rounded-full shadow-xl transition-all duration-300 transform
-                 hover:scale-105 hover:ring-4 ring-emerald-400 ring-opacity-60
-                 focus:outline-none focus:ring-4 focus:ring-emerald-500 focus:ring-opacity-75
-                 tracking-wide"
-                                data-aos="zoom-in"
-                                data-aos-delay="300"
-                                data-aos-duration="800"
-                            >
-                                Create Your Free Account &rarr;
-                            </a>
                         </div>
                     </section>
                 </main>

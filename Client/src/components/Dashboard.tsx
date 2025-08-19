@@ -1,9 +1,7 @@
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-
-import { useState, useEffect } from "react";
+import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight, FiMenu, FiX } from "react-icons/fi";
+import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
-import { FiMenu, FiX } from "react-icons/fi";
-import { FaBook, FaListAlt } from "react-icons/fa"; // Example icons
+import { FaBook, FaListAlt } from "react-icons/fa";
 
 export default function LearningPlatform() {
   const [categories, setCategories] = useState([]);
@@ -11,6 +9,8 @@ export default function LearningPlatform() {
   const [expandedSection, setExpandedSection] = useState(null);
   const [selectedConcept, setSelectedConcept] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/learning/categories/")
@@ -32,28 +32,60 @@ export default function LearningPlatform() {
         .catch((err) => console.error("Error fetching category:", err));
   }, [activeCategory?.id]);
 
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 200;
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="py-5 flex flex-col min-h-screen text-black">
       {/* Top Tabs */}
-      <div className="flex items-center justify-start space-x-3 p-3 text-black 
-                  overflow-x-auto whitespace-nowrap border-b bg-white shadow-md">
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => {
-              setActiveCategory(cat);
-              setExpandedSection(null);
-              setSelectedConcept(null);
-            }}
-            className={`inline-block px-4 py-3 rounded-lg transition-all duration-300 
-          ${activeCategory?.id === cat.id
-                ? "bg-blue-600 text-white shadow-lg"
-                : "bg-gray-200 hover:bg-gray-400"
-              }`}
-          >
-            {cat.name}
-          </button>
-        ))}
+      <div className="relative px-12 flex items-center border-b bg-white shadow-md">
+        {/* Left Arrow */}
+        <button
+          onClick={() => scroll("left")}
+          className="absolute left-0 z-10 h-full px-2 bg-gradient-to-r from-white to-transparent flex items-center"
+        >
+          <FiChevronLeft className="w-6 h-6 text-gray-600 hover:text-black" />
+        </button>
+
+        {/* Scrollable Tabs */}
+        <div
+          ref={scrollRef}
+          className="flex items-center space-x-3 p-3 text-black overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide"
+        >
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setActiveCategory(cat);
+                setExpandedSection(null);
+                setSelectedConcept(null);
+              }}
+              className={`inline-block px-4 py-3 rounded-lg transition-all duration-300 
+                ${
+                  activeCategory?.id === cat.id
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "bg-gray-200 hover:bg-gray-400"
+                }`}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Right Arrow */}
+        <button
+          onClick={() => scroll("right")}
+          className="absolute right-0 z-10 h-full px-2 bg-gradient-to-l from-white to-transparent flex items-center"
+        >
+          <FiChevronRight className="w-6 h-6 text-gray-600 hover:text-black" />
+        </button>
       </div>
 
       <div className="flex flex-1 bg-gray-800 relative">
@@ -90,7 +122,6 @@ export default function LearningPlatform() {
                       <FiChevronDown className="w-4 h-4" />
                     )}
                   </span>
-
                 </button>
                 {expandedSection === section.id && (
                   <div className="ml-3 mt-1 space-y-1">

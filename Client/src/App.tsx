@@ -9,6 +9,7 @@ import Analysis from "./pages/Analysis"
 import About from "./pages/About";
 import Chatbot from "./pages/Chatbot";
 import Dashboard from "./components/Dashboard";
+import Contact from "./pages/Contact"
 
 function App() {
   const location = useLocation();
@@ -24,7 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="tanveer" element={<Tanveer />} />
-         {/* <Route path="/concept/:id" element={<Concept />} /> */}
+         <Route path="/contact" element={<Contact />} />
         <Route path="maroof" element={<Maroof />} />
         <Route path="about" element={<About />} />
         <Route path="chatbot-ai" element={<Chatbot />} />

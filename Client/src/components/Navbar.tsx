@@ -10,16 +10,11 @@ const Navbar = () => {
 
   // Dropdown wale items
   const menuItems = {
-    Projects: { Tanveer: [], Maroof: [] },
-    Tools: {
-      "Face Authentication": [],
+    Projects: {
       "Chatbot AI": [],
-      "Data Visualization": [],
-      "Data Cleaning": [],
-      "Data Engineering": [],
-      "Data Analysis": [],
+      "Face Authentication": [],
+      "Data Visualization": []
     },
-    Explore: { Home: [], About: [] },
   };
 
   const closeAll = () => {
@@ -39,15 +34,48 @@ const Navbar = () => {
   const MenuList = ({ mobile }) => (
     <ul className={mobile ? "space-y-4" : "flex gap-10 text-white"}>
       {/* Learn ko direct link bana diya */}
-      <li>
-        <Link
-          to="/dashboard"
-          className={`${mobile ? "w-full text-left text-xl" : "text-lg"} font-bold hover:text-teal-400`}
-          onClick={closeAll}
-        >
-          Learn
-        </Link>
-      </li>
+       <li>
+    <Link
+      to="/"
+      className={`${mobile ? "w-full text-left text-xl" : "text-lg"} font-bold hover:text-teal-400`}
+      onClick={closeAll}
+    >
+      Home
+    </Link>
+  </li>
+
+  {/* About */}
+  <li>
+    <Link
+      to="/about"
+      className={`${mobile ? "w-full text-left text-xl" : "text-lg"} font-bold hover:text-teal-400`}
+      onClick={closeAll}
+    >
+      About
+    </Link>
+  </li>
+
+  {/* Contact */}
+  <li>
+    <Link
+      to="/contact"
+      className={`${mobile ? "w-full text-left text-xl" : "text-lg"} font-bold hover:text-teal-400`}
+      onClick={closeAll}
+    >
+      Contact
+    </Link>
+  </li>
+
+  {/* Learn */}
+  <li>
+    <Link
+      to="/dashboard"
+      className={`${mobile ? "w-full text-left text-xl" : "text-lg"} font-bold hover:text-teal-400`}
+      onClick={closeAll}
+    >
+      Learn
+    </Link>
+  </li>
 
       {Object.entries(menuItems).map(([key, items]) => (
         <li
@@ -57,13 +85,12 @@ const Navbar = () => {
           onMouseLeave={() =>
             !mobile &&
             ((hoverRef.current = false),
-            setTimeout(() => !hoverRef.current && closeAll(), 150))
+              setTimeout(() => !hoverRef.current && closeAll(), 150))
           }
         >
           <button
-            className={`${
-              mobile ? "w-full text-left text-xl" : "text-lg"
-            } font-bold hover:text-teal-400`}
+            className={`${mobile ? "w-full text-left text-xl" : "text-lg"
+              } font-bold hover:text-teal-400`}
             onClick={() => mobile && toggleMenu(true, key)}
           >
             {key}

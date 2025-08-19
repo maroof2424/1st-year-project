@@ -1,11 +1,7 @@
-// src/pages/about.tsx
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
-// Interface for a team member
 interface TeamMember {
   name: string;
   role: string;
@@ -15,12 +11,10 @@ interface TeamMember {
     linkedin: string;
     github: string;
     twitter: string;
-    // You can add more social platforms here if needed
-    [key: string]: string; // This allows for additional social links dynamically
+    [key: string]: string;
   };
 }
 
-// Interface for our core values
 interface CoreValue {
   icon: string;
   title: string;
@@ -28,44 +22,39 @@ interface CoreValue {
   color: string;
 }
 
-// Interface for testimonials
 interface Testimonial {
   quote: string;
   name: string;
   title: string;
-  type: "Student" | "Parent" | "Teacher" | "Client"; // Added 'Client' type
+  type: "Student" | "Parent" | "Teacher" | "Client"; 
 }
 
 const About = () => {
-  // Initialize AOS animations on component mount
   useEffect(() => {
     AOS.init({ once: true, duration: 800 });
   }, []);
 
-  // Team members data (Tanveer and Maroof)
   const teamMembers: TeamMember[] = [
     {
       name: "Tanveer",
       role: "Co-Founder, Full-Stack Developer",
       bio: "Passionate about building robust and scalable web applications. My expertise lies in creating seamless user experiences and efficient backend systems.",
-      imageUrl: "https://placehold.co/400x400/1F2937/D1D5DB?text=Tanveer", // Replace with Tanveer's actual image URL
+      imageUrl: "https://placehold.co/400x400/1F2937/D1D5DB?text=Tanveer",
       socials: {
-        linkedin: "https://www.linkedin.com/in/tanveer-example", // Replace with Tanveer's actual LinkedIn profile
-        github: "https://github.com/tanveer-example", // Replace with Tanveer's actual GitHub profile
-        twitter: "https://twitter.com/tanveer-example", // Replace with Tanveer's actual Twitter profile
-        // Add more social links for Tanveer here if needed
+        linkedin: "https://www.linkedin.com/in/tanveer-example", 
+        github: "https://github.com/malik-tanveer",
+        twitter: "https://twitter.com/tanveer-example", 
       },
     },
     {
       name: "Maroof",
       role: "Co-Founder, AI & Data Enthusiast",
       bio: "Driven by the potential of data and artificial intelligence to solve complex problems. I focus on integrating intelligent solutions to enhance application functionality.",
-      imageUrl: "https://placehold.co/400x400/1F2937/D1D5DB?text=Maroof", // Replace with Maroof's actual image URL
+      imageUrl: "https://placehold.co/400x400/1F2937/D1D5DB?text=Maroof",
       socials: {
-        linkedin: "https://www.linkedin.com/in/maroof-example", // Replace with Maroof's actual LinkedIn profile
-        github: "https://github.com/maroof-example", // Replace with Maroof's actual GitHub profile
-        twitter: "https://twitter.com/maroof-example", // Replace with Maroof's actual Twitter profile
-        // Add more social links for Maroof here if needed
+        linkedin: "https://www.linkedin.com/in/maroof-example",
+        github: "https://github.com/maroof2424",
+        twitter: "https://twitter.com/maroof-example", 
       },
     },
   ];
@@ -98,7 +87,6 @@ const About = () => {
     },
   ];
 
-  // Testimonials data from various perspectives
   const testimonials: Testimonial[] = [
     {
       quote: "Working with Tanveer and Maroof was an incredible experience. Their technical expertise and collaborative spirit made our project a huge success!",
@@ -354,42 +342,6 @@ const About = () => {
           </div>
         </section>
 
-        <hr className="border-slate-700 my-12" />
-
-        {/* --- Section 7: Call to Action --- */}
-        <section id="cta" className="text-center py-20">
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-white"
-            data-aos="fade-up"
-          >
-            Let's Build Something New Together!
-          </h2>
-          <p
-            className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            If you have an idea or want to know more about our projects, feel free to contact us.
-          </p>
-          <div
-            className="flex flex-col sm:flex-row justify-center items-center gap-6"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <Link
-              to="/projects" // Link to your projects page
-              className="px-10 py-4 bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-bold text-lg rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
-            >
-              <i className="fas fa-project-diagram mr-2"></i> View Our Projects
-            </Link>
-            <Link
-              to="/contact" // Link to your contact page
-              className="px-10 py-4 border-2 border-cyan-400 text-cyan-300 font-bold text-lg rounded-full shadow-lg hover:bg-cyan-400 hover:text-white hover:scale-105 transition-all duration-300"
-            >
-              <i className="fas fa-envelope mr-2"></i> Contact Us
-            </Link>
-          </div>
-        </section>
       </main>
     </div>
   );
