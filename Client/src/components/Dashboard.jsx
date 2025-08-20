@@ -2,6 +2,9 @@ import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight, FiMenu, FiX 
 import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { FaBook, FaListAlt } from "react-icons/fa";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
 
 export default function LearningPlatform() {
   const [categories, setCategories] = useState([]);
@@ -158,6 +161,8 @@ export default function LearningPlatform() {
               <h1 className="text-2xl font-bold mb-4">{selectedConcept.title}</h1>
               <div className="prose max-w-none">
                 <ReactMarkdown
+                  remarkPlugins={[remarkMath]}   // ⬅️ math parsing
+                  rehypePlugins={[rehypeKatex]} // ⬅️ render with KaTeX
                   components={{
                     code({ inline, className, children, ...props }) {
                       return inline ? (
