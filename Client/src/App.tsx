@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Chatbot from "./pages/Chatbot";
 import Dashboard from "./components/Dashboard";
 import Contact from "./pages/Contact"
+import Chatbotcor from './components/Chatbotcor'
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
       </Routes>
 
       {!hideLayout && <Footer />}
+      {!hideLayout && <Chatbotcor />}
     </>
   );
 }

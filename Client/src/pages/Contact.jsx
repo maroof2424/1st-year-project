@@ -65,7 +65,9 @@ const Contact = () => {
 
           <div className="flex items-center space-x-4">
             <FaEnvelope className="text-blue-400 text-2xl" />
-            <span>yourmail@example.com</span>
+            <span>youloos477@gmail.com</span>
+            <span>maroof123@gmail.com</span>
+
           </div>
           <div className="flex items-center space-x-4">
             <FaPhoneAlt className="text-green-400 text-2xl" />
@@ -73,7 +75,7 @@ const Contact = () => {
           </div>
           <div className="flex items-center space-x-4">
             <FaMapMarkerAlt className="text-red-400 text-2xl" />
-            <span>Lahore, Pakistan</span>
+            <span>Karachi, Pakistan</span>
           </div>
         </motion.div>
 
