@@ -4,8 +4,6 @@ import Home from "./components/Home";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Notfound from "./pages/Notfound";
 import Tanveer from "./pages/Tanveer";
-import Maroof from "./pages/Maroof";
-import Analysis from "./pages/Analysis"
 import About from "./pages/About";
 import Chatbot from "./pages/Chatbot";
 import Dashboard from "./components/Dashboard";
@@ -26,13 +24,9 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="tanveer" element={<Tanveer />} />
          <Route path="/contact" element={<Contact />} />
-        <Route path="maroof" element={<Maroof />} />
         <Route path="about" element={<About />} />
         <Route path="chatbot-ai" element={<Chatbot />} />
         <Route path="dashboard" element={<Dashboard />} />
-
-        <Route path="data-analysis" element={<Analysis />} />
-        
         <Route path="*" element={<Notfound />} />
       </Routes>
 
