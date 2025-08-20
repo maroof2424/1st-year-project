@@ -29,3 +29,4 @@ pnpm-debug.log*
 
 # Optional: if using TypeScript
 *.tsbuildinfo
+node_modules
